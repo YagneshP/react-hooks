@@ -4,8 +4,17 @@
 import * as React from 'react'
 
 function Board() {
+  function intialState() {
+    return (
+      JSON.parse(window.localStorage.getItem('game')) ?? Array(9).fill(null)
+    )
+  }
   // 🐨 squares is the state for this component. Add useState for squares
-  const [squares, setSquares] = React.useState(Array(9).fill(null))
+  const [squares, setSquares] = React.useState(intialState)
+
+  React.useEffect(() => {
+    window.localStorage.setItem('game', JSON.stringify(squares))
+  }, [squares])
 
   // 🐨 We'll need the following bits of derived state:
   const nextValue = calculateNextValue(squares)
