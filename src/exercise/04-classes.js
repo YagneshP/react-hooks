@@ -63,9 +63,6 @@ function Board() {
     </div>
   )
 }
-class Board extends React.Component {
-  render() {}
-}
 
 function Game() {
   return (
