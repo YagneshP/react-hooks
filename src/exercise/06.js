@@ -65,7 +65,7 @@ function ErrorFallback({error}) {
   return (
     <div>
       There was an error:{' '}
-      <pre style={{whiteSpace: 'normal'}}>{this.state.error.message}</pre>
+      <pre style={{whiteSpace: 'normal'}}>{error.message}</pre>
     </div>
   )
 }
@@ -81,7 +81,7 @@ function App() {
       <PokemonForm pokemonName={pokemonName} onSubmit={handleSubmit} />
       <hr />
       <div className="pokemon-info">
-        <ErrorBoundary FallBackComponent={ErrorFallback}>
+        <ErrorBoundary FallBackComponent={ErrorFallback} key={pokemonName}>
           <PokemonInfo pokemonName={pokemonName} />
         </ErrorBoundary>
       </div>
